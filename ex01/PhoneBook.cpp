@@ -32,7 +32,6 @@ void PhoneBook::addContact()
         std::cout << "Error: fields cannot be empty." << std::endl;
         return;
     }
-
     contacts[index].setFirstName(firstName);
     contacts[index].setLastName(lastName);
     contacts[index].setNickname(nickname);
@@ -44,19 +43,28 @@ void PhoneBook::addContact()
         totalContacts++;
 }
 
-std::string PhoneBook::truncate(std::string str)
+std::string PhoneBook::formatField(std::string str)
 {
+    std::string result;
+    
     if (str.length() > 10)
-        return (str.substr(0, 9) + ".");
-    return str;
+        result = str.substr(0, 9) + ".";
+    else
+        result = str;
+    while (result.length() < 10)
+        result = result + " ";
+    return result;
 }
 
 void PhoneBook::displayContact(int i)
 {
-    std::cout << i << " | ";
-    std::cout << truncate(contacts[i].getFirstName()) << " | ";
-    std::cout << truncate(contacts[i].getLastName()) << " | ";
-    std::cout << truncate(contacts[i].getNickname()) << std::endl;
+    std::string indexStr;
+    indexStr = i + '0';
+    
+    std::cout << formatField(indexStr) << "|";
+    std::cout << formatField(contacts[i].getFirstName()) << "|";
+    std::cout << formatField(contacts[i].getLastName()) << "|";
+    std::cout << formatField(contacts[i].getNickname()) << std::endl;
 }
 
 void PhoneBook::searchContact()
@@ -70,8 +78,11 @@ void PhoneBook::searchContact()
         std::cout << "Phonebook is empty!" << std::endl;
         return;
     }
-    std::cout << "    Index  |  First Name  |  Last Name  |  Nickname    " << std::endl;
-    std::cout << "-------------------------------------------------------" << std::endl;
+    std::cout << formatField("Index") << "|";
+    std::cout << formatField("First Name") << "|";
+    std::cout << formatField("Last Name") << "|";
+    std::cout << formatField("Nickname") << std::endl;
+    std::cout << "-------------------------------------------" << std::endl;
 
     i = 0;
     while(i < totalContacts)
@@ -96,8 +107,7 @@ void PhoneBook::searchContact()
         std::cout << "Invalid out of range!" << std::endl;
         return;
     }
-
-    std::cout << "\n=== Contact Details ===" << std::endl;
+    std::cout << "----------------- Contact Details -----------------" << std::endl;
     std::cout << "First Name: " << contacts[choice].getFirstName() << std::endl;
     std::cout << "Last Name: " << contacts[choice].getLastName() << std::endl;
     std::cout << "Nickname: " << contacts[choice].getNickname() << std::endl;

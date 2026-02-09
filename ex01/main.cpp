@@ -4,30 +4,29 @@
 
 int main(int ac ,char **av)
 {
-    (void)av ;
+    (void)av;
     if (ac != 1)
-        return 0;
+    {
+       std::cout << "Error: This program does not accept arguments." << std::endl;
+       return 1;
+    }
     PhoneBook phonebook;
     std::string line;
-
     std::cout << "=================== Welcome to your PhoneBook! ===================" << std::endl;
-
     while (true)
     {
         std::cout << "Enter command (ADD, SEARCH, EXIT): ";
         if (!std::getline(std::cin, line))
             break;
-        if (line == "ADD" || line == "add")
+        if (line == "ADD")
             phonebook.addContact();
-        else if (line == "SEARCH" || line == "search")
+        else if (line == "SEARCH")
             phonebook.searchContact();
-        else if (line == "EXIT" || line == "exit")
+        else if (line == "EXIT")
             break;
         else
-            std::cout << "Unknown command: " << line << std::endl;
+            std::cout << "Unknown command." << std::endl;
     }
-    
-
     std::cout << "============================ Goodbye! ============================" << std::endl;
     return 0;
 
