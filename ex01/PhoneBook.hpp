@@ -11,6 +11,7 @@ class PhoneBook {
         Contact contacts[8];
         int     index;
         int     totalContacts;
+        int     isValidInput(std::string str);
     
     public:
         PhoneBook();

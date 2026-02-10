@@ -6,26 +6,54 @@ PhoneBook::PhoneBook()
     this->totalContacts=0;
 }
 
+int PhoneBook::isValidInput(std::string str)
+{
+    size_t i;
+    
+    i = 0;
+    while (i < str.length())
+    {
+        if (str[i] == 27)
+            return 0;
+        i++;
+    }
+    return 1;
+}
+
 void PhoneBook::addContact()
 {
     std::string firstName, lastName, nickname, phoneNumber, darkestSecret;
-    
-    std::cout << "Enter First Name: ";
-    if (!std::getline(std::cin, firstName))
-        return;
-    std::cout << "Enter Last Name: ";
-    if (!std::getline(std::cin, lastName))
-        return;
-    std::cout << "Enter Nickname: ";
-    if (!std::getline(std::cin, nickname))
-        return;
-    std::cout << "Enter Phone Number: ";
-    if (!std::getline(std::cin, phoneNumber))
-        return;
-    std::cout << "Enter Darkest Secret: ";
-    if (!std::getline(std::cin, darkestSecret))
-        return;
 
+    std::cout << "Enter First Name: ";
+    if (!std::getline(std::cin, firstName) || !isValidInput(firstName))
+    {
+        std::cout << "Error: Invalid input detected (don't use arrow keys)." << std::endl;
+        return;
+    }
+    std::cout << "Enter Last Name: ";
+    if (!std::getline(std::cin, lastName) || !isValidInput(lastName))
+    {
+        std::cout << "Error: Invalid input detected (don't use arrow keys)." << std::endl;
+        return;
+    }
+    std::cout << "Enter Nickname: ";
+    if (!std::getline(std::cin, nickname) || !isValidInput(nickname))
+    {
+        std::cout << "Error: Invalid input detected (don't use arrow keys)." << std::endl;
+        return;
+    }
+    std::cout << "Enter Phone Number: ";
+    if (!std::getline(std::cin, phoneNumber) || !isValidInput(phoneNumber))
+    {
+        std::cout << "Error: Invalid input detected (don't use arrow keys)." << std::endl;
+        return;
+    }
+    std::cout << "Enter Darkest Secret: ";
+    if (!std::getline(std::cin, darkestSecret) || !isValidInput(darkestSecret))
+    {
+        std::cout << "Error: Invalid input detected (don't use arrow keys)." << std::endl;
+        return;
+    }
     if (firstName.empty() || lastName.empty() || nickname.empty()
         || phoneNumber.empty() || darkestSecret.empty())
     {
