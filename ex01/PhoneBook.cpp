@@ -6,7 +6,7 @@ PhoneBook::PhoneBook()
     this->totalContacts=0;
 }
 
-int PhoneBook::isValidInput(std::string str)
+int PhoneBook::isValidInput(std::string str) const
 {
     size_t i;
     
@@ -71,7 +71,7 @@ void PhoneBook::addContact()
         totalContacts++;
 }
 
-std::string PhoneBook::formatField(std::string str)
+std::string PhoneBook::formatField(std::string str) const
 {
     std::string result;
     
@@ -84,7 +84,7 @@ std::string PhoneBook::formatField(std::string str)
     return result;
 }
 
-void PhoneBook::displayContact(int i)
+void PhoneBook::displayContact(int i) const
 {
     std::string indexStr;
     indexStr = i + '0';
@@ -95,7 +95,7 @@ void PhoneBook::displayContact(int i)
     std::cout << formatField(contacts[i].getNickname()) << std::endl;
 }
 
-void PhoneBook::searchContact()
+void PhoneBook::searchContact() const
 {
     int         i;
     int         choice;
