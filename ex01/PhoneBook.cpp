@@ -2,8 +2,8 @@
 
 PhoneBook::PhoneBook()
 {
-    this->index = 0;
-    this->totalContacts=0;
+    index = 0;
+    totalContacts = 0;
 }
 
 int PhoneBook::isValidInput(std::string str) const

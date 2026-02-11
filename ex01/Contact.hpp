@@ -12,11 +12,11 @@ private:
     std::string darkestSecret;
 
 public:
-    void setFirstName(std::string firstName);
-    void setLastName(std::string lastName);
-    void setPhoneNumber(std::string phoneNumber);
-    void setNickname(std::string nickname);
-    void setDarkestSecret(std::string darkestSecret);
+    void setFirstName(std::string name);
+    void setLastName(std::string lastn);
+    void setPhoneNumber(std::string number);
+    void setNickname(std::string nickn);
+    void setDarkestSecret(std::string secret);
 
     std::string getFirstName() const;
     std::string getLastName() const;
@@ -26,3 +26,4 @@ public:
 };
 
 #endif
+
